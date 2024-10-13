@@ -16,6 +16,27 @@
             text-decoration: none;
             cursor: default;
         }
+
+        .box {
+            width: 100%;
+            border: 1px rgb(240, 240, 240) solid;
+            box-shadow: 0px 0px 7px 1px rgb(247, 247, 247);
+        }
+
+        .box-description {
+            margin: 20px 0px 10px 0px;
+            font-size: 15px;
+        }
+
+        .secondary-link {
+            color: gray;
+        }
+
+        @media (width > 1000px) {
+            .box {
+                min-width: 500px;
+            }
+        }
     </style>
 </head>
 <body style="display: flex; justify-content: center;">
@@ -24,7 +45,7 @@
         <strong style="font-size: large;">Alex</strong> <!--professional graphics designer. Rate: 1000$/hour-->
         <div style="display: flex; justify-content: space-between; width: 100%; font-size: small;">
             <p style="font-size: small; margin-right: 30px;">computer science engineer</p>
-            <p>Last edited: Aug 6, 2024</p>
+            <p>Last edited: Oct 13, 2024</p>
         </div>
     </div>
     <div style="margin: 0px 20px;">
@@ -33,8 +54,17 @@
         <a href="https://github.com/alexgf0" style="margin: 0px 0px 0px 20px;">github</a>
     </div>
     <hr>
-    <div style="width: 100%; height: 200px; display: flex; justify-content: center; align-items: center;">
-        <p> uh... oh... nothing to see here...</p>
+    <div style="width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; margin-top: 20px; gap: 10px;">
+        <div class="box">
+            <div style="margin: 10px 30px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <strong><a href="./blog-posts/studee-tv.html">The Story of Studee</a></strong>
+                    <p style="font-size:small;">Oct, 2024</p>
+                </div>
+
+                <p class="box-description" style="padding-bottom: 10px;">The good, the bad and the ugly</p>
+            </div>
+        </div>
     </div>
 </div>
 </body>

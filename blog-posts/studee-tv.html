@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>koalex</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐨</text></svg>">
+    <style>
+        html, body, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            font-size: 16px;
+        }
+
+        .body-text {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .selected {
+            color:red;
+            text-decoration: none;
+            cursor: default;
+        }
+
+        .text-w-img {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .img-slider {
+            max-width: 80%;
+            width: 80%;
+        }
+
+        @media (width < 1000px) {
+            .text-w-img {
+                gap: 0;
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+            
+            .img-slider {
+                max-width: 95%;
+                width: 95%;
+            }
+        }
+
+    </style>
+
+    <script>
+        const firstVersionImgs = [ "./studee-tv/ready.jpeg", "./studee-tv/first-studee.jpeg", "./studee-tv/second-login.jpeg", "./studee-tv/first-profile.jpeg" ]
+        const firstClockImgs = [ "./studee-tv/ready.jpeg", "./studee-tv/first-clock.jpeg", "./studee-tv/second-clock.jpeg", "./studee-tv/third-clock.jpeg" ]
+        const firstHomeImgs = [ "./studee-tv/ready.jpeg", "./studee-tv/second-profile.jpeg", "./studee-tv/first-home.jpeg" ]
+        const contributionsImgs = [ "./studee-tv/github-activity.png", "./studee-tv/first-contribution.jpeg", "./studee-tv/second-contribution.jpeg", "./studee-tv/third-contribution.jpeg",
+            "./studee-tv/fourth-contribution.jpeg", "./studee-tv/fith-contribution.jpeg", "./studee-tv/sixth-contribution.jpeg",
+         ]
+        const profileImgs = [ "./studee-tv/ready.jpeg", "./studee-tv/third-profile.jpeg", "./studee-tv/fourth-profile.jpeg", "./studee-tv/fith-profile.jpeg" ]
+        const refactorImgs = [ "./studee-tv/ready-tall.jpeg", "./studee-tv/refactor-study.jpeg", "./studee-tv/refactor-stats.jpeg", "./studee-tv/refactor-profile.jpeg" ]
+
+
+        var firstVersionImgsState = 0
+        var firstClockImgsState = 0
+        var firstHomeImgsState = 0
+        var contributionsImgsState = 0
+        var profileImgsState = 0
+        var refactorImgState = 0
+
+        function moveImage(imgArray, elementId, counterId, mod, state)  {
+            const el = document.getElementById(elementId)
+            const counter = document.getElementById(counterId)
+            const newIdx = mod(state) >= 0 ? mod(state) % imgArray.length : mod(state) + imgArray.length
+
+            el.src = imgArray[newIdx]
+            counter.textContent = newIdx
+            state = newIdx
+
+            return newIdx
+        }
+
+        const forwardFirstVersionImg = () => {
+            const newIdx = moveImage(firstVersionImgs, 'firstVersion', 'firstVersionCounter', (el) => el+1, firstVersionImgsState)
+            firstVersionImgsState = newIdx
+        }
+        const backFirstVersionImg = () => {
+            const newIdx = moveImage(firstVersionImgs, 'firstVersion', 'firstVersionCounter', (el) => el-1, firstVersionImgsState)
+            firstVersionImgsState = newIdx
+        }
+
+        const forwardClockImg = () => {
+            const newIdx = moveImage(firstClockImgs, 'firstClock', 'firstClockCounter', (el) => el+1, firstClockImgsState)
+            firstClockImgsState = newIdx
+        }
+        const backClockImg = () => {
+            const newIdx = moveImage(firstClockImgs, 'firstClock', 'firstClockCounter', (el) => el-1, firstClockImgsState)
+            firstClockImgsState = newIdx
+        }
+
+        const forwardHomeImg = () => {
+            const newIdx = moveImage(firstHomeImgs, 'firstHome', 'firstHomeCounter', (el) => el+1, firstHomeImgsState)
+            firstHomeImgsState = newIdx
+        }
+        const backHomeImg = () => {
+            const newIdx = moveImage(firstHomeImgs, 'firstHome', 'firstHomeCounter', (el) => el-1, firstHomeImgsState)
+            firstHomeImgsState = newIdx
+        }
+
+        const forwardContributionsImg = () => {
+            const newIdx = moveImage(contributionsImgs, 'contribution', 'contributionCounter', (el) => el+1, contributionsImgsState)
+            contributionsImgsState = newIdx
+        }
+        const backContributionsImg = () => {
+            const newIdx = moveImage(contributionsImgs, 'contribution', 'contributionCounter', (el) => el-1, contributionsImgsState)
+            contributionsImgsState = newIdx
+        }
+
+        const forwardProfileImg = () => {
+            const newIdx = moveImage(profileImgs, 'profile', 'profileCounter', (el) => el+1, profileImgsState)
+            profileImgsState = newIdx
+        }
+        const backProfileImg = () => {
+            const newIdx = moveImage(profileImgs, 'profile', 'profileCounter', (el) => el-1, profileImgsState)
+            profileImgsState = newIdx
+        }
+
+        const forwardRefactorImg = () => {
+            const newIdx = moveImage(refactorImgs, 'refactor', 'refactorCounter', (el) => el+1, refactorImgState)
+            refactorImgState = newIdx
+        }
+        const backRefactorImg = () => {
+            const newIdx = moveImage(refactorImgs, 'refactor', 'refactorCounter', (el) => el-1, refactorImgState)
+            refactorImgState = newIdx
+        }
+
+    </script>
+
+</head>
+<body style="display: flex; justify-content: center;">
+<div style="min-width: 300px">
+    <div style="margin: 40px 20px;">
+        <strong style="font-size: large;">Alex</strong> <!--professional graphics designer. Rate: 1000$/hour-->
+        <div style="display: flex; justify-content: space-between; width: 100%; font-size: small;">
+            <p style="font-size: small; margin-right: 30px;">computer science engineer</p>
+            <p>Last edited: Oct 13, 2024</p>
+        </div>
+    </div>
+    <div style="margin: 0px 20px;">
+        <a href="../blog.html" >blog</a>
+        <a href="../index.html" disabled="disabled" style="margin: 0px 0px 0px 20px;">projects</a>
+        <a href="https://github.com/alexgf0" style="margin: 0px 0px 0px 20px;">github</a>
+    </div>
+    <hr>
+    <p style="text-align: end;">Oct, 2024</p>
+
+
+    <div style="width: 90vw; height: 100%; max-width: 836px; display: flex; flex-direction: column; margin-top: 30px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin: 0px; gap: 50px">
+            <h1 style="margin: 4px">Studee.tv</h1>
+            <h3 style="margin: 4px">the good, the bad and the ugly</h3>
+        </div>
+        <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
+        <p class="body-text" style="text-indent: 10%;">
+            You leave many unfinished projects to die, I know you do.
+            And now that you cannot judge me so much, let me tell you how my dreams and aspirations perished for <i>studee.tv</i>.
+            A web app where you would track your study time, and even hang out with your friends!
+        </p>
+        <p class="body-text">
+            The time was a sunny month of June, 2023. Me, an almost graduated CS student full of innocence and life. Determined to build
+            a complete project that could actually be used by people. So where do we start?
+        </p>
+        <p class="body-text">
+            Well, you can't build a web app without something to build it with.<br>
+            So the time to make decisions came, and if you know me, you'll know I hate unnecessary complexity or bloatedness.
+            Therefore I threw away all the ideas of using any type of web framework like <a href="https://react.dev/">React</a>
+            or <a href="https://angular.dev/">Angular</a> (I even passed on <a href="https://tailwindcss.com/">tailwindcss</a>),
+            and decided to create a frontend with just the following tools:
+        </p>
+        <ul style="margin: 0;">
+            <li>Html</li>
+            <li>CSS</li>
+            <li>Javascript</li>
+        </ul>
+        <p class="body-text" style="margin-top:8px; text-align: end;">Oh boy did that was annoying afterwards...</p>
+        <p style="font-size: 18px;">
+            For the backend, you could say I took an even more unconventional route. I wanted to use <strong>Rust</strong>, which I started learning a bit earlier
+            (the <a href="https://doc.rust-lang.org/book/">Rust book</a> is amazing btw) both for serving the frontend, and to implement the backend logic.
+            So after reading a bit about crates (Rust libraries) I choose the following stack:
+        </p>
+        <ul style="margin: 0;">
+            <li>Rust 🦀</li>
+            <li><a href="https://actix.rs/">Actix-web</a>: Web framework to handle connections and routing.</li>
+            <li><a href="https://github.com/launchbadge/sqlx">Sqlx</a>: Compiled-time checked queries without a DSL.</li>
+            <li>PostgreSQL: just a nice database 🐘.</li>
+        </ul>
+        <p class="body-text" style="margin-top: 18px;">
+            Ready to go? Let's get building!
+        </p>
+
+        <h1 style="margin-top: 40px; margin-bottom: 0px; text-align: center;">If you want people to use it, you might need to have users</h1>
+        <hr style="width: 100%;">
+        <div class="text-w-img">
+            <div>
+            <p class="body-text" style="text-indent: 10%; margin-top: 10px;">
+                In the beginning you should keep things as simple as possible, the whole <i>move fast and break things</i> stuff you know, the usual.
+                In hindsight I probably should have started with the core functionality of the webapp, but... users it is.
+            </p>
+            <p class="body-text">
+                And just like that, the fanciest login <i>UI</i> you will ever see was born.
+                <br>
+                To make it more than just a piece of art, I added a login functionality following (not fully) the <a href="https://datatracker.ietf.org/doc/html/rfc7617">RFC7617</a>
+                publication. This coupled with a bit of <a href="https://en.wikipedia.org/wiki/HTTP_cookie#Http-only_cookie">http-only cookie</a> magic (miss me with that XSS) and 
+                a hash table, made for the dream authentication system.
+            </p>
+            </div>
+            <img src="./studee-tv/first-login.png" alt="screenshot of my fisrt login page" style="max-width: 300px; max-height: 100px; margin-top:20px; border: 1px solid black; padding: 10px; border-radius: 6px;">
+        </div>
+        <p class="body-text">
+            Forget about fancy <a href="https://redis.io/">Redis</a> setups to scale up with multiple instances sharing the state. Choose a HashMap, that's the way to go, trust me okay?
+        </p>
+
+        <h1 style="margin-top: 40px; margin-bottom: 0px; text-align: center;">Designing is a job for a reason</h1>
+        <hr style="width: 100%;">
+        <p class="body-text" style="text-indent: 10%; margin-top: 10px;">
+            Can I be honest with you for a second? I'm not a natural at designing. I never have been and I've never pretended to be. So bare with me through this, 
+            I promise that when we get to the refactor part it gets better.
+        </p>
+        <div style="margin: 20px 0px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <img id="firstVersion" src="./studee-tv/ready.jpeg" class="img-slider" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+            <div class="img-slider" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <button style="width: 60px; height: 30px;"
+                    onclick="backFirstVersionImg()">
+                <
+                </button>
+                <div style="height: 100%; display: flex; align-items: center;">
+                    <p id="firstVersionCounter">0</p>
+                </div>
+                <button style="width: 60px; height: 30px;"
+                    onclick="forwardFirstVersionImg()"
+                >
+                >
+                </button>
+            </div>
+        </div>
+
+        <p class="body-text" >
+            It's a start. 
+        </p>
+        <p class="body-text">
+            Looking at the 3rd picture you may have realized (if you have great eyesight) that we are already tracking the total
+            time studied. This is going great!
+        </p>
+        <p class="body-text">
+            Now let's focus on, well... being able to track your study time?
+        </p>
+        <div style="margin: 20px 0px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <img id="firstClock" src="./studee-tv/ready.jpeg" class="img-slider" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+            <div class="img-slider" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <button style="width: 60px; height: 30px;"
+                    onclick="backClockImg()">
+                <
+                </button>
+                <div style="height: 100%; display: flex; align-items: center;">
+                    <p id="firstClockCounter">0</p>
+                </div>
+                <button style="width: 60px; height: 30px;"
+                    onclick="forwardClockImg()"
+                >
+                >
+                </button>
+            </div>
+        </div>
+        <p class="body-text">
+        Okay, I said I'm not a natural.
+       </p>
+       <p class="body-text">
+            The clock works more or less decently, we are not just relying on <a href="https://developer.mozilla.org/es/docs/Web/API/Window/setTimeout">setTimeout()</a>
+            to make the time increment. When the timer for <i>setTimeout()</i> finishes, the instruction is placed on a queue and will run on the next opportunity, not immediately.
+            So to make an accurate timer avoiding drift from <i>CPU hogging</i>, we account for said drift measuring the offset of the actual time waited <i>vs</i> the expected one,
+            and substract that from the next <i>setTimeout</i> call.
+       </p>
+       <p class="body-text">
+            What's the use of the big white rectangle (3rd picture) you ask? Well, <i>studee.tv</i> won't just track the total amount of time you've spent working or studying.
+            It will allow you to write down your tasks and select them when you're studying, that way you can know on what you're spending your time on.
+       </p>
+
+       <p class="body-text" style="margin-top: 10px;">
+            Now with our amazing progress in the studying <i>UI</i>, the profile page seems a bit underwhelming right?
+            <br>
+            We can go ahead and add a modern and luxurious design to improve the <i>UX</i>, and even start sketching the welcome page for the webapp.
+       </p>
+        <div style="margin: 20px 0px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <img id="firstHome" src="./studee-tv/ready.jpeg" class="img-slider" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+            <div class="img-slider" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <button style="width: 60px; height: 30px;"
+                    onclick="backHomeImg()">
+                <
+                </button>
+                <div style="height: 100%; display: flex; align-items: center;">
+                    <p id="firstHomeCounter">0</p>
+                </div>
+                <button style="width: 60px; height: 30px;"
+                    onclick="forwardHomeImg()"
+                >
+                >
+                </button>
+            </div>
+        </div>
+
+       <p class="body-text">
+            You remember we did the users earlier right? But you may have noticed that on the 2nd image, the login button says <i>Google Login</i>. Well... after thinking a bit about
+            the complexity of handling account creation while trying to avoid spam and other issues, <a href="https://es.wikipedia.org/wiki/OAuth">OAuth</a> came to mind.
+            We could unburden the user from creating yet another account, and simplify our account creation process, that's a <i>win-win</i> in my book.
+            <br>
+            So <i>OAuth</i> it is then. But we're not going to use a crate for it, of course not, that is for the weak. If I'm going to use <i>OAuth</i> I want to really understand
+            the process, so I created a <a href="https://github.com/alexgf0/oauth">repo</a> where I did just that. And after understanding it a bit better, setting it up on <i>studee.tv</i>
+            was trivial.
+       </p>
+       <p class="body-text" style="margin-top: 10px;">
+            To be honest, although you may not agree with me, the profile page seems a little bit empty. It would be cool to also see the user's study activity over a week or something right?
+            (<i>foreshadowing</i>)
+       </p>
+        <div style="margin: 20px 0px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <img id="profile" src="./studee-tv/ready.jpeg" class="img-slider" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+            <div class="img-slider" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <button style="width: 60px; height: 30px;"
+                    onclick="backProfileImg()">
+                <
+                </button>
+                <div style="height: 100%; display: flex; align-items: center;">
+                    <p id="profileCounter">0</p>
+                </div>
+                <button style="width: 60px; height: 30px;"
+                    onclick="forwardProfileImg()"
+                >
+                >
+                </button>
+            </div>
+        </div>
+
+        <p class="body-text" style="margin-top: 10px;">
+            The 3rd one looks decent, you have to admit that (the bottom part 😁).
+        </p>
+        <p class="body-text" style="margin-top: 10px">
+            Now let's focus on getting those pesky tasks working won't we?
+            This is the moment where I really hated myself for not using a framework like <i>React</i>. Making the dynamic element creation with just <i>javascript</i> and <i>CSS</i> wasn't the
+            cleanest thing I've ever done, but it ended up working just fine, so there you have it.
+        </p>
+        <div style="margin: 20px 0px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <video class="img-slider" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);" controls>
+                <source src="studee-tv/tasks.mp4" type="video/mp4">
+                Your browser doesn't support the video tag
+            </video>
+        </div>
+
+
+        <h1 style="margin-top: 40px; margin-bottom: 0px; text-align: center;">Good artists copy, great artists steal</h1>
+        <hr style="width: 100%;">
+        <p class="body-text" style="text-indent: 10%; margin-top: 10px;">
+            We track time, and we can determine where we spend our time, but how can we make the user want to keep a streak? How can we make it enjoyable to look at the work you
+            have done over a long period of time?
+            <br>
+            Well, if you're a seasoned programmer, you probably know the feeling of having a <i>GitHub</i> contribution streak, all those green squares of happiness... just the best.
+            <br>
+            So of course we went ahead and took <i>"great inspiration"</i> to design our own version.
+        </p>
+
+        <div style="margin: 20px 0px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <img id="contribution" src="./studee-tv/github-activity.png" class="img-slider" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+            <div class="img-slider" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <button style="width: 60px; height: 30px;"
+                    onclick="backContributionsImg()">
+                <
+                </button>
+                <div style="height: 100%; display: flex; align-items: center;">
+                    <p id="contributionCounter">0</p>
+                </div>
+                <button style="width: 60px; height: 30px;"
+                    onclick="forwardContributionsImg()"
+                >
+                >
+                </button>
+            </div>
+        </div>
+
+        <p class="body-text" style="margin-top: 10px;">
+            Now that we are talking about <i>taking inspiration</i>, do you know another great advantage of using a framework like <i>tailwindcss</i>?
+            The many well design examples you can take <i>inspiration</i> from...
+            <br>
+            So after reaching this point, and realizing that I'm just not going to be the next Jony Ive, I decided to succumb to the possibilities that <i>tailiwndcss</i>
+            offers, and just like that, the refactor began.
+            <br>
+            I'm not going to bother you with the details, so here you have the renewed <i>studee UI</i>.
+        </p>
+        <div style="margin: 20px 0px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <img id="refactor" src="./studee-tv/ready-tall.jpeg" class="img-slider" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);">
+            <div class="img-slider" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <button style="width: 60px; height: 30px;"
+                    onclick="backRefactorImg()">
+                <
+                </button>
+                <div style="height: 100%; display: flex; align-items: center;">
+                    <p id="refactorCounter">0</p>
+                </div>
+                <button style="width: 60px; height: 30px;"
+                    onclick="forwardRefactorImg()"
+                >
+                >
+                </button>
+            </div>
+        </div>
+        <p class="body-text" style="margin-top: 10px;">
+            Better right? I know, that's what <i>"inspiration"</i> gets you.
+        </p>
+        <p class="body-text">
+            Oh yeah, I also visited <a href="https://www.pexels.com/">pexels</a> to make a fancier welcome page using some of their amazing free photos.
+            Let me show you the end result and current state of <i>studee.tv</i>:
+        </p>
+        <div style="margin: 20px 0px; width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <video class="img-slider" style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);" controls>
+                <source src="studee-tv/showcase.mp4" type="video/mp4">
+                Your browser doesn't support the video tag
+            </video>
+        </div>
+
+        <h1 style="margin-top: 40px; margin-bottom: 0px; text-align: center;">Not every story has a happy ending</h1>
+        <hr style="width: 100%;">
+        <p class="body-text" style="margin-top:10px; text-indent: 10%;">
+            Maybe during this blog post you were curious to see if <i>www.studee.tv</i> was up and running with the app that I have been telling you about,
+            and sadly although at times it has been, currently it is not. 
+        </p>
+        <p class="body-text">
+            To put it simply, I don't want to keep published a non-finished project. And to be completely honest with you, if I were to publish this I think I would refactor the whole
+            thing.
+            <br>
+            It was really fun to just run at the problem without any external help. You get to dive into the core problems with your own perspective and see
+            why some solutions are being used.
+            <br>
+            It's been a while since I don't touch <i>studee</i> and I'm not planning on working on it any time soon.
+            I'm currently working on other projects that maybe will appear around here in the future. Having said that, I felt that writing down the story (although I skipped quite a bit)
+            would be a cool thing to look back at in the future.
+        </p>
+        <p class="body-text" style="margin-top: 20pxi;">
+            Hope you enjoyed it!
+        </p>
+        <p class="body-text" style="text-align: end;">
+            - <strong>Alex</strong>
+        </p>
+    </div>
+</div>
+</body>
+</html>
+
