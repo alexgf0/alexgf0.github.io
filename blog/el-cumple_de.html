@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>koalex</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐨</text></svg>">
+    <style>
+        html, body, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            font-size: 16px;
+        }
+
+        .body-text {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .selected {
+            color:red;
+            text-decoration: none;
+            cursor: default;
+        }
+
+        .text-w-img {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .img-group {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        @media (width < 1000px) {
+            .text-w-img {
+                gap: 0;
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+            
+           .img-group {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+<body style="display: flex; justify-content: center;">
+<div style="min-width: 300px">
+    <div style="margin: 40px 20px;">
+        <strong style="font-size: large;">Alex</strong> <!--professional graphics designer. Rate: 1000$/hour-->
+        <div style="display: flex; justify-content: space-between; width: 100%; font-size: small;">
+            <p style="font-size: small; margin-right: 30px;">computer science engineer</p>
+            <p>Last edited: Oct 28, 2024</p>
+        </div>
+    </div>
+    <div style="margin: 0px 20px;">
+        <a href="../blog.html" >blog</a>
+        <a href="../index.html" disabled="disabled" style="margin: 0px 0px 0px 20px;">projects</a>
+        <a href="https://github.com/alexgf0" style="margin: 0px 0px 0px 20px;">github</a>
+    </div>
+    <hr>
+    <p style="text-align: end;">Oct, 2024</p>
+
+
+    <div style="width: 90vw; height: 100%; max-width: 836px; display: flex; flex-direction: column; margin-top: 30px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin: 0px; gap: 50px">
+            <h1 style="margin: 4px">
+                🥳 <a href="https://el-cumple.de">el-cumple.de</a>
+            </h1>
+            <h3 style="margin: 4px">build fast & iterate.</h3>
+        </div>
+        <hr style="width: 100%; margin-top: 0px; margin-bottom: 20px;">
+
+    <div class="text-w-img">
+        <div>
+            <p class="body-text" style="text-indent: 10%; margin-top: 10px;">
+                Building a complete product is hard. You fear your UI may not be good enough, you never want to let your users down and you can always add new features to improve things.
+            </p>
+            <p class="body-text">
+                How can we build something then?
+                <br>
+                The trusty old <a href="https://en.wikipedia.org/wiki/Waterfall_model">waterfall model</a> has turned out to be too rigid compared to other more <a href="https://en.wikipedia.org/wiki/Agile_software_development">agile methods</a>.
+                The <strong>MVP</strong> (Minimum Viable Product) approach seems to be the <i>go to</i> in the startup world, as <strong>Michael Seibel</strong> said in
+                <a href="https://www.ycombinator.com/library/6f-how-to-plan-an-mvp"><i>How to plan an MVP</i></a> - <i>"If you can walk away with one thing from this presentation, it's launch something bad quickly."</i>
+                and I took that <strong>personally</strong>.
+            </p>
+            <p class="body-text">
+                So our journey begins, we want to build something that the user wants, and most important we want to build it <strong>fast</strong>.
+                <br>
+                I also made having online payments a requirement. To test how hard was to setup <a href="https://stripe.com/">stripe</a> and because the possibility of earning money brought excitement to the mix.
+            </p>
+        </div>
+            <img src="./el-cumple_de/jankiness.webp" alt="mark I iron man suit" style="max-width: 300px; max-height: 400px; height:auto; width:200%; margin-top:20px;padding: 10px; border-radius: 20px;">
+    </div>
+    
+    <h1 style="margin-top: 40px; margin-bottom: 0px; text-align: center;">The age-old question. What to build?</h1>
+    <hr style="width: 100%;">
+
+    <p class="body-text" style="text-indent: 10%; margin-top: 10px;">
+        The goal wasn't to have a great idea, let's get that out of the way. I just wanted something very simple that felt somewhat complete and that I could build in about a week.
+        <br>
+        So... <strong>birthdays</strong>!🥳 Everyone likes birthdays right? Families are reunited, there's cake for everyone, you get those fancy socks from your granny, a peak experience.
+        <br>
+        And how can we make that better? <strong>Birthday cards</strong>, but not the lame old analog expecience, we're talking <strong>blockchain wishes</strong>, the <i>revolutionizing new way of expressing</i> ❤️.
+        <br>
+        Okay, that was some jargon to see if any <i>angel investor</i> took the bait, we're just going to create some basic birthday cards webpage, nothing too special. Build fast, remember?
+        <br>
+        We'll use the domain <a href="https://el-cumple.de">el-cumple.de</a> to target a spanish audience, I picked this name becuase it's a good <a href="https://es.wikipedia.org/wiki/Domain_hack">domain hack</a>
+        that could be translated as <i>the-birthday.of</i> .
+    </p>
+    <div class="text-w-img">
+        <div>
+            <p class="body-text" style="text-indent: 10%; margin-top: 10px;">
+                Time to get our hands dirty. We need to create a path with very little resistance for the user to buy something from us, in this case a webpage.
+                After some thought I decided on taking some basic user input in two initial <i>steps</i>. Then we can let the user try some templates with their info
+                to see how their page would look like.
+            </p>
+            <p class="body-text">
+                At first I wanted to include images as an input field, it could be nice to have that personal touch integrated with some other details to wish a happy birthday.
+                But ensuring that the images didn't have sensitive or ilegal content, and handling the different possible aspect ratios would take some time, we can't afford that.
+            </p>
+            <p class="body-text">
+                What then should we take as input?
+                I settled on the basic stuff:
+            </p>
+            <ul style="margin: 0px">
+                <li>Name of the birthday person</li>
+                <li>Birthday date</li>
+                <li>Name of the person sending the happy birthday</li>
+                <li>Age of the birthday person (optional)</li>
+                <li>Small happy birthday text where you can write up to 190 characters</li>
+            </ul>
+        </div>
+            <img src="./el-cumple_de/first-home-page.png" alt="First design of the home page" style="max-width: 200px; max-height: 400px; margin-top:20px;padding: 10px; border-radius: 16px;">
+    </div>
+    <p class="body-text" style="margin-top: 10px;">
+        Oh and if you're wondering about that incredible marketing image, which transmits the pricing information so effectively and in such an efficient way. I did that myself, yes...
+    </p>
+
+    <h1 style="margin-top: 40px; margin-bottom: 0px; text-align: center;">The template temple</h1>
+    <hr style="width: 100%;">
+
+    <p class="body-text" style="text-indent: 10%; margin-top: 10px;">
+        Anyway, we need some templates right?
+        Let's start by designing the first one, we can give it a party look with some disco lights. We're also going to add some confetti effect to complete the look,
+        which should give us a decent start. 
+    </p>
+    <video style="max-height: 50vh; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); border-radius: 16px; margin-top: 10px;" controls>
+        <source src="./el-cumple_de/template1-start.mp4" type="video/mp4">
+    </video>
+    <p class="body-text" style="margin-top: 20px;">
+        And as you may have noticed I added a little pulse animation to highlight the main message, not too bad.
+        <br>
+        We still have a lot of free space that I'm not sure what to do with. I'm also not really convinced by the background color at the top.
+        So as I do every time I have blank space on a webpage, I headed to <a href="pexels.com">pexels</a> to grab some cool images that could improve the aesthetic of the page.
+    </p> 
+    <p class="body-text">
+        And just like that our first two templates were created (we ended up only having three).
+    </p>
+    <div class="img-group">
+        <img src="./el-cumple_de/template1-preview.png" alt="preview of the first template with the addition of pexel images" style="max-width: 200px; max-height: 400px; margin-top:20px;padding: 10px; border-radius: 16px;">
+        <img src="./el-cumple_de/template2-preview.png" alt="preview of the second template" style="max-width: 200px; max-height: 400px; margin-top:20px;padding: 10px; border-radius: 16px;">
+        <img src="./el-cumple_de/final-template1.png" alt="refactor of the first template" style="max-width: 200px; max-height: 400px; margin-top:20px;padding: 10px; border-radius: 16px;">
+    </div>
+
+    <p class="body-text" style="margin-top: 20px;">
+        As you could see in the third picture, I refactored the first template to only use one image. The first result was just too ugly 😅, fixing it didn't take much time.
+        <br>
+        The second template is just a simple static design in which I also included the confetti throw when the page is loaded, this was very easy to do and I thought it looked pretty clean.
+    </p>
+    <p class="body-text">
+        For our final template I wanted to do something <strong>dynamic</strong>. Something that could catch your attention with multiple moving pieces. After a little while I came up with the following idea, <strong>flying emojis</strong>.
+        Yup, that sounds great 😎.
+    </p>
+    <video style="max-height: 50vh; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); border-radius: 16px; margin-top: 20px;" controls>
+        <source src="./el-cumple_de/template3-preview.mp4" type="video/mp4">
+    </video>
+
+    <p class="body-text" style="margin-top: 20px">
+        If you want, you can now go to <a href="https://el-cumple.de">el-cumple.de</a> to try all the templates for yourself. Althought the confetti effect will only be shown when the 
+        page is actually bought and set with its own link.
+    </p>
+
+    <h1 style="margin-top: 40px; margin-bottom: 0px; text-align: center;">Get it up and running</h1>
+    <hr style="width: 100%;">
+
+    <p class="body-text" style="text-indent: 10%; margin-top: 10px;">
+        Okay, we can now take of the <strong>designing hat</strong> and start focusing on how we can actually receive <strong>payments</strong> from clients.
+        Handling it ourselves would be nice, but there's a bunch of responsibility and possible issues involved, that's why I choose <a href="https://stripe.com">stripe</a>,
+        a pretty standard solution.
+        <br>
+        We just need to create an account, create the product and the pricing, add the keys to our code and link to the payment page with the keys
+        info, pretty simple. Oh, and also add some callback urls for when the payment is successful or canceled.
+        <br>
+        Sounds good right? Well, there's a little issue, how can we retrieve the user input info on the success callback? 
+        From what I read, there's no such thing as sending the info to stripe so when the payment is completed it can send that info back.
+    </p>
+    <p class="body-text">
+        Yes, I know what you're thinking <a href="https://en.wikipedia.org/wiki/Query_string">query parameters</a>, you're right.
+        But as I didn't want to possibly have 300 characters of query params I took the <i>backend local session</i> route.
+        <br>
+        When the user clicks on the payment button, we create a backend entry into a map stored in memory, with all the info we have collected
+        and a new generated id. When we redirect the user to the stripe payment we define the success and failure url callbacks
+        with the addition of said id as a query parameter.
+        Then, when we receive the confirmation or cancelation from stripe, we can either create the page or clean the information from the memory map using that id.
+    </p>
+    <p class="body-text">
+        Very simple right? Another cool thing about stripe is the <a href="https://docs.stripe.com/test-mode">test mode</a>, which as the name implies
+        lets you test the payment system as if it was really running, but without making any charges.
+        You can even use a <a href="https://docs.stripe.com/testing">test card number</a> like <i>4242 4242 4242 4242</i> alongside other fake data to
+        test the system.
+        <br>
+        Once everything works nicely, you just have to switch the links to the <i>live version</i> and you're set.
+    </p>
+    <p class="body-text">
+        What's not so cool about stripe for this project is the fixed fees per transaction, with the loss of 0.25€ per each sale we are left only with 3/4 of profit from our price
+        (before taxes, and without counting stripe 1.5% cut). Don't get me wrong, I think stripe has an amazing service going on, but how could we improve our margin?
+    </p> 
+
+    
+    <div class="text-w-img">
+        <div>
+            <p class="body-text">
+                <strong>Inflation baby</strong>😎
+            </p>
+            <p class="body-text">
+                We outdid ourselves with this second <strong>marketing masterpiece</strong>, which raises the price just a little bit to get more margin over the fixed costs of transactions.
+                Okay it doubles the price.
+            </p>
+            <p class="body-text">
+                My assumption was that the limiting factor for the average purchase is the user not wanting to introduce his card on my page, not really the difference
+                between 1€ or 2€.
+            </p>
+            <p class="body-text">
+                As long as we keep it on the <i>coin range</i> I think we are good.
+            </p>
+        </div>
+        <img src="./el-cumple_de/final-landing-page.png" alt="final landing page with price increase" style="max-width: 200px; max-height: 400px; margin-top:20px;padding: 10px; border-radius: 16px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3)">
+    </div>
+
+    <p class="body-text" style="text-indent: 10%; margin-top: 20px;">
+        Now let's talk about <strong>deployement</strong>. In the past, for most of my webpage projects I opted for using a <strong>VPS</strong> (Virtual Private Server),
+        in particular I went with <a href="https://www.linode.com/">Linode</a> using the cheapest plan available. But as time went on I grew a little bit tired of having to pay
+        those 5€ monthly, and because I have an old PC laying around I decided it would be better to self-host, spending about 10€ in electricity bills monthly 🙄.
+    </p>
+    <p class="body-text">
+        The setup turned out to be decently simple, but we had some silly issues that resulted in the process taking a bit longer.
+    </p>
+    <p class="body-text">
+        First we needed to setup the <strong>DDNS</strong> (Dynamic Domain Name System), since at home I don't have a <strong>static IP</strong> address. I headed to
+        <a href="https://www.noip.com/">no-ip</a> to configure my account and then link my home network address.
+        After completing all that correctly I quickly set up a simple ssh server and to my surprise I could not reach it from outside my network.
+        <br>
+        Wow, the DDNS must have something wrong right? Well, after checking and checking the configuration for some hours I found nothing, everything seemed to be well configured
+        and working, but it was not. So I kept digging until I found out that my provider used <strong><a href="https://en.wikipedia.org/wiki/Carrier-grade_NAT">CG-NAT</a></strong>
+        which means that I don't even have a <strong>public IP</strong> so I cannot reach my home network.
+        <br>
+        A quick call to my internet provider fixed the issue, and after that we now have our reachable ssh server, from anywhere in the world, <strong>nice</strong>.
+    </p>
+    <p class="body-text">
+        Next I installed <a href="https://nginx.org/en/">nginx</a>, got the <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">ssl</a> certificates with <a href="https://certbot.eff.org/">certbot</a>,
+        and started receiving <i>http & https</i> petitions on my home server. At this point I thought about setting the <a href="https://el-cumple.de">el-cumple.de</a> DNS records pointing
+        to my home IP, that way we could actually use the server for the webpage with the domain name.
+    </p>
+    <p class="body-text">
+        But it didn't feel good. I don't really want to expose my home server IP that easily right? So with the amazing <a href="https://www.cloudflare.com/plans/free/">free plan</a>
+        that <a href="https://www.cloudflare.com/">cloudflare</a> offers, I couldn't resist to set a proxy with them.
+        With this we don't expose our IP, we get free statistics with their online dashboard and even some
+        <a href="https://en.wikipedia.org/wiki/Denial-of-service_attack#Distributed_DoS">DDoS</a> mitigation, seems like a great deal to me.
+    </p>
+    <p class="body-text">
+        The only problem was that when I was setting everything up, I already had configured nginx to reroute the http traffic to https, and by default cloudflare connects to http on the origin server
+        (their Flexible mode). So long story short I was getting a bunch of redirects in the client that lead to browser errors, and me not being able to load the page.
+        The fix was easy, we just needed to set the connection to the origin server with https (the Strict mode) and everything worked fine, but it did take me a while to figure out what the
+        problem was.
+    </p>
+    <p class="body-text" style="margin-top: 10px;">
+        So anyway, after all that we now have a complete web page running in our domain <a href="https://el-cumple.de">el-cumple.de</a> .
+        <br>
+        What should we do now?
+    </p>
+
+    <h1 style="margin-top: 40px; margin-bottom: 0px; text-align: center;">Spread the word</h1>
+    <hr style="width: 100%;">
+
+    <p class="body-text" style="text-indent: 10%; margin-top: 10px;">
+        Most people when they publish their first project think that traffic is going to come flying towards them for some magical reason,
+        making them instantly the new hottest thing around.
+        Well, since this isn't my first rodeo, I know that the most traffic you're going to get if you do nothing is some crawl bots and
+        maybe family and friends.
+    </p>
+    <p class="body-text">
+        But first let me make a <strong>disclaimer</strong>, when I got the idea of making this simple page to create birthday cards, I knew that the most
+        likely result was that no one would want to pay for it. I wasn't even convinced that if I made it free it would actually get much traction.
+        <br>
+        My main goal with this was to publish something where the possibility of getting payed existed, and to actually get feedback from possible users to transform it into
+        something useful.
+    </p>
+    <p class="body-text">
+        So I went out there and <a href="https://www.reddit.com/r/askspain/comments/1gci4sv/pagaríais_2_por_una_felicitación_de_cumple_en/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button">
+        spread the word on Reddit</a>, and to my surprise I got more engagement than expected. With about <strong>15.000 views</strong> on the first day from a single post and <strong>57 comments</strong>.
+        How did that translate to actual page visits to our site? Well, not splendidly, looking at the cloudflare analytics we saw an increase of about <strong>230 new
+        unique visitors</strong> to our page, which is decent but only represents a <strong>1.5% conversion rate</strong> from reddit view to page visit.
+    </p>
+    <p class="body-text">
+        What I really loved was the commenting interactions. I'm really thankful for all the feedback which has given me new perspectives that I may have not considered on my own.
+        I also believe that I've gotten a much more insightful view on the market response to such a type of product. This made me discover some adaptions that could make
+        the service actually useful for some type of users.
+    </p>
+    <p class="body-text">
+        But the real question that you may all be asking.
+    </p>
+    <p class="body-text">
+        <strong>Did you sell anything?</strong> The answer to that one is <strong>yes</strong>, but sadly I was the only client and only because
+        I wanted to make sure that the payment was really working 😂🥲. The real answer: <strong>nope</strong>. So if you have 2€ laying around, and you want to make a young man very happy ❤️, you
+        can go to <a href="el-cumple.de">el-cumple.de</a> and purchase yourself an incredible birthday page to gift to anyone you know.
+    </p>
+
+    <h1 style="margin-top: 40px; margin-bottom: 0px; text-align: center;">What's up next?</h1>
+    <hr style="width: 100%;">
+
+    <p class="body-text" style="text-indent: 10%; margin-top: 10px;">
+        As I said earlier, getting all the feedback gave me some ideas on what should be the actual service that this page offers. But when am I going to take on that refactor? I'm not really sure, for now
+        I want to go back to working on my main thing. I may do it on the side if I feel like it, but I'm not really in a rush to get it done.
+        <br>
+        All in all, I feel like I learned a bunch with this project and I'm really happy about how it turned out. I have strengthened my belief for the importance of shipping fast, and more so
+        when you don't have reasons to believe that your product has good market fit.
+    </p>
+    <p class="body-text" style="margin-top: 20pxi;">
+            As always I hope you enjoyed this story.
+    </p>
+    <p class="body-text" style="text-align: end;">
+        - <strong>Alex</strong>
+    </p>
+
+
+    </div>
+</div>
+</body>
+</html>
+
